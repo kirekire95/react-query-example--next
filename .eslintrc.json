@@ -1,3 +1,302 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:jsx-a11y/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "next",
+    "next/core-web-vitals"
+  ],
+  "ignorePatterns": [
+    "node_modules/**",
+    "src/graphql/__generated__/**",
+    "package.json",
+    "*.md"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "ecmaVersion": 12,
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "impliedStrict": true,
+      "classes": true,
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "jquery": true,
+    "jest": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "rules": {
+    "@typescript-eslint/type-annotation-spacing": ["error"],
+    "@typescript-eslint/explicit-member-accessibility": 0,
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-array-constructor": "off",
+    "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      {
+        "prefer": "type-imports",
+        "disallowTypeAnnotations": false
+      }
+    ],
+    "@typescript-eslint/adjacent-overload-signatures": "error",
+    "@typescript-eslint/await-thenable": "error",
+    // "@typescript-eslint/require-await": "error",
+    "@typescript-eslint/ban-ts-comment": [
+      2,
+      {
+        "ts-expect-error": "allow-with-description",
+        "ts-ignore": "allow-with-description",
+        "ts-nocheck": "allow-with-description",
+        "ts-check": "allow-with-description",
+        "minimumDescriptionLength": 10
+      }
+    ],
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "Foo": "Do not use Foo because it is unsafe",
+          "String": {
+            "message": "Use string instead",
+            "fixWith": "string"
+          },
+          "Boolean": {
+            "message": "Use boolean instead",
+            "fixWith": "boolean"
+          },
+          "Number": {
+            "message": "Use number instead",
+            "fixWith": "number"
+          },
+          "Object": {
+            "message": "Use object instead",
+            "fixWith": "object"
+          },
+          "Array": {
+            "message": "Provide a more specific type"
+          },
+          "{}": {
+            "message": "Use object instead",
+            "fixWith": "object"
+          }
+        }
+      }
+    ],
+    "@typescript-eslint/array-type": [
+      2,
+      {
+        "default": "array"
+      }
+    ],
+    "@typescript-eslint/default-param-last": ["error"],
+    "@typescript-eslint/prefer-includes": "error",
+    "@typescript-eslint/prefer-readonly": [
+      "error",
+      {
+        "onlyInlineLambdas": false
+      }
+    ],
+    "@typescript-eslint/no-inferrable-types": [
+      2,
+      {
+        "ignoreParameters": false,
+        "ignoreProperties": false
+      }
+    ],
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": true,
+        "variables": true,
+        "typedefs": true
+      }
+    ],
+    "tailwindcss/classnames-order": "warn",
+    "tailwindcss/enforces-negative-arbitrary-values": "warn",
+    "tailwindcss/enforces-shorthand": "warn",
+    "tailwindcss/migration-from-tailwind-2": "warn",
+    "tailwindcss/no-arbitrary-value": "off",
+    // "tailwindcss/no-custom-classname": "warn",
+    "tailwindcss/no-contradicting-classname": "error",
+    "complexity": ["error", { "max": 10 }],
+    "one-var": ["error", "never"],
+    "no-restricted-properties": [
+      "error",
+      {
+        "object": "Math",
+        "property": "pow",
+        "message": "Use the exponentiation operator (**) instead"
+      },
+      {
+        "object": "require",
+        "property": "ensure",
+        "message": "Please use import() instead. More info: https://facebook.github.io/create-react-app/docs/code-splitting"
+      }
+    ],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "WithStatement",
+        "message":
+          "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+      },
+      {
+        "selector": "ForInStatement",
+        "message":
+          "for-in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
+      },
+      {
+        "selector": "CallExpression[callee.name=Number]",
+        "message": "Do not use the Number function. Use parseInt or parseFloat instead."
+      },
+      {
+        "selector": "CallExpression[callee.name=Boolean]",
+        "message": "Do not use the Boolean function. Use a strict comparison instead."
+      },
+      {
+        "selector": "CallExpression[callee.name=setTimeout][arguments.length!=2]",
+        "message": "setTimeout must always be invoked with two arguments."
+      }
+    ],
+    "no-debugger": "warn",
+    "no-alert": "warn",
+    "no-underscore-dangle": 0,
+    "no-console": 0,
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "args": "none"
+      }
+    ],
+    // no-unused-vars off because we will use the TypeScript one instead. This will fix annoying issues with no-unused-vars for interfaces etc.
+    "no-unused-vars": "off",
+    "no-else-return": "warn",
+    "no-useless-concat": "off",
+    "no-useless-return": "error",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-useless-escape": "warn",
+    "no-var": "error",
+    "no-shadow": "off",
+    "no-unused-expressions": [
+      2,
+      {
+        "allowTaggedTemplates": true
+      }
+    ],
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
+    ],
+    "prefer-template": "warn",
+    "prefer-rest-params": "warn",
+    "prefer-spread": "warn",
+    "prefer-const": [
+      "error",
+      {
+        "destructuring": "all"
+      }
+    ],
+    "spaced-comment": "error",
+    "no-spaced-func": "error",
+    "arrow-body-style": [2, "always"],
+    "getter-return": "error",
+    "func-names": 0,
+    "space-before-function-paren": 0,
+    "comma-dangle": 0,
+    "max-len": 0,
+    "import/extensions": ["error", "always", {
+      "js": "never",
+      "jsx": "never",
+      "ts": "never",
+      "tsx": "never",
+      "json": "never"
+    }],
+    "import/prefer-default-export": 0,
+    "import": 0,
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "consistent-return": 1,
+    "react/jsx-no-bind": 0,
+    "react/function-component-definition": "off",
+    "react/jsx-curly-spacing": 1,
+    "react/display-name": 1,
+    "react/no-array-index-key": 0,
+    "react/react-in-jsx-scope": 0,
+    "react/prefer-stateless-function": 0,
+    "react/forbid-prop-types": 0,
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": 0,
+    "react/no-unescaped-entities": 0,
+    "react/require-default-props": 0,
+    "react-hooks/rules-of-hooks": "error",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".jsx", ".tsx"]
+      }
+    ],
+    "radix": 0,
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "prettier/prettier": [
+      "error",
+      {
+        "bracketSpacing": true,
+        "arrowParens": "avoid",
+        "trailingComma": "none",
+        "semi": false,
+        "singleQuote": true,
+        "printWidth": 100
+      }
+    ],
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "warn",
+      {
+        "aspects": ["invalidHref"]
+      }
+    ]
+  },
+  "plugins": ["@typescript-eslint", "prettier", "react", "tailwindcss"]
 }
