@@ -25,7 +25,7 @@ export default function Home() {
     })
   }
 
-  function handleSearch(event: ChangeEvent<HTMLInputElement>) {
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.currentTarget
     setSearchQuery(value)
   }
